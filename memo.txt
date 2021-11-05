@@ -1,0 +1,20 @@
+df_diff1 = df['일계도부호']
+df_diff1 = np.array(df_diff1)
+data_x = [df_diff1[i:i+50] for i in range(1350)]
+data_y = [df_diff1[i+51] for i in range(1350)]
+train_x, test_x, train_y, test_y = train_test_split(
+    data_x, data_y, test_size=0.2, random_state=5)
+
+model = linear_model.LinearRegression()
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+pred_y[:10]
+trans_pred = pred_y.copy()
+for i in range(len(pred_y)):
+    if pred_y[i] < 0.5:
+        trans_pred[i] = 0
+    else:
+        trans_pred[i] = 1
+mae = mean_absolute_error(test_y, trans_pred)
+mse = mean_squared_error(test_y, trans_pred)
+round(mae, 2), round(mse, 2)
