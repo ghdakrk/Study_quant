@@ -1,0 +1,17 @@
+<input>
+df = 
+close, open, ma20, upper(lower/volatility), f_close, f_vol, f_open, ff_clo, ff_vol
+d-n
+d-(n-1)
+...
+d-1
+
+<output>  > 이런식으로 구분
+100000 > +5 up
+010000 > +3
+001000 > +1
+000100 > -1 < 0 < 1
+000010 > -1
+000001 > -3
+
+
